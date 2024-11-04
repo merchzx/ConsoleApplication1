@@ -15,18 +15,20 @@ void forwardList::PushBack(int value)
 		head = new_node;
 		tail = new_node;
 	}
+	size++;
 }
 
 void forwardList::Print()
 {
 	if (head && tail) {
 		Node* current = head;
-		while (current!=nullptr)
+		while (current != nullptr)
 		{
 			cout << current->value << endl;
 			current = current->next;
 		}
 	}
+	cout << size;
 }
 
 void forwardList::PopFront()
@@ -39,8 +41,32 @@ void forwardList::PopFront()
 		}
 		head = temp;
 	}
+	size++;
 }
 
-void forwardList::popBack()
+forwardList::~forwardList()
 {
+	Node* current = head;
+	while (current != nullptr) {
+		Node* next = current->next;
+		delete current;
+		current = next;
+	}
+	size = 0;
+	head=tail=nullptr;
+	cout << "Destructor";
 }
+
+//forwardList::~forwardList()
+//{
+//	Node* current = head;
+//	while (current != nullptr) {
+//		Node* next = current->next;
+//		delete current;
+//		current = next;
+//	}
+//	head = nullptr;
+//	tail = nullptr;
+//	size = 0;
+//	cout << "Destructor";
+//}
