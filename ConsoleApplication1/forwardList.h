@@ -15,11 +15,13 @@ class forwardList
 	Node* tail;
 	int size;
 public:
+	forwardList(const forwardList& obj);
 	forwardList() : head(nullptr),tail(nullptr),size(0) {}
 	void PushBack(int value);
 	void Print();
 	void PopFront();
-	void popBack();
+	const Node* find(int value);
+	/*void popBack();*/
 	~forwardList();
 };
 

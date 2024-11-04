@@ -2,6 +2,11 @@
 #include <iostream>
 using namespace std;
 
+forwardList::forwardList(const forwardList& obj)
+{
+
+}
+
 void forwardList::PushBack(int value)
 {
 
@@ -28,7 +33,7 @@ void forwardList::Print()
 			current = current->next;
 		}
 	}
-	cout << size;
+	cout << "Size - "<<size;
 }
 
 void forwardList::PopFront()
@@ -44,6 +49,19 @@ void forwardList::PopFront()
 	size++;
 }
 
+const Node* forwardList::find(int value)
+{
+	Node* current = head;
+	while (current!=nullptr)
+	{
+		if (current->value == value) {
+			return current;
+		}
+		current = current->next;
+	}
+	return nullptr;
+}
+
 forwardList::~forwardList()
 {
 	Node* current = head;
@@ -54,19 +72,5 @@ forwardList::~forwardList()
 	}
 	size = 0;
 	head=tail=nullptr;
-	cout << "Destructor";
+	cout << "\nDestructor";
 }
-
-//forwardList::~forwardList()
-//{
-//	Node* current = head;
-//	while (current != nullptr) {
-//		Node* next = current->next;
-//		delete current;
-//		current = next;
-//	}
-//	head = nullptr;
-//	tail = nullptr;
-//	size = 0;
-//	cout << "Destructor";
-//}
